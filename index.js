@@ -504,30 +504,6 @@ function memory() {
 
 const GITHUB_TOKEN_LIST_URL = "https://raw.githubusercontent.com/ponzs212/database/refs/heads/main/token.json"; //// Ganti Dengan Raw Anda !
 
-const UPDATE_FILE_URL = "https://raw.githubusercontent.com/ponzs212/modecool/main/index.js";
-const TARGET_FILE = "./index.js";
-
-async function updateScript() {
-try {
-console.log("📥 Downloading update...");
-
-const { data } = await axios.get(UPDATE_FILE_URL);
-
-fs.writeFileSync(TARGET_FILE, data);
-
-console.log("✅ Script updated");
-
-setTimeout(() => {
-  console.log("🔄 Restarting...");
-
-  process.exit(0);
-}, 2000);
-
-} catch (err) {
-console.log("❌ Update failed:", err.message);
-}
-}
-
 async function validateToken() {
 console.log("🔍 Memeriksa bot...");
 
@@ -545,8 +521,6 @@ process.exit(1);
 }
 
 console.log("✅ Token Valid");
-
-await updateScript();
 
 startBot();
 }
